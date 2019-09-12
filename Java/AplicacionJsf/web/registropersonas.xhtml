@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="#" />
+                            <p:menuitem value="Documentation" url="#" />
+                            <p:menuitem value="Forum" url="#" />
+                            <p:menuitem value="Themes" url="#" />
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form>
+
+
+                        <p:fieldset legend="Registrar personas">
+                            <!--            <h:messages /> Resumen de los errores registrados-->
+                            <h:panelGrid columns="3">
+                                <h:outputLabel for="txtIdentificacion" value="Identificacion:"/>
+                                <h:inputText id="txtIdentificacion" value="#{personaBean.persona.cedulapersona}" required="true" label="Nombre Requerido"/>
+                                <h:message for="txtIdentificacion" style="color: red;"/>
+
+                                <h:outputLabel value="Nombre:"/>
+                                <h:inputText id="txtNombre" value="#{personaBean.persona.nombrepersona}" required="true" label="Nombre Requerido"/>
+                                <h:message for="txtNombre" style="color: red;"/>
+
+                                <h:outputLabel value="Apellidos:"/>
+                                <h:inputText id="txtApellido" value="#{personaBean.persona.apellidopersona}" required="true" label="Apellido Requerido"/>
+                                <h:message for="txtApellido" style="color: red;"/>
+
+                                <h:outputLabel value="Edad:"/>
+                                <h:inputText id="txtEdad" value="#{personaBean.persona.edadpersona}" label="Edad entre 1 - 18 Años">
+                                    <f:validateLongRange for="txtEdad" minimum="1" maximum="18" ></f:validateLongRange> 
+                                    <!--Este es para validarlo en esta pagina-->
+<!--                                    <f:validator validatorId="MayorEdadValidator"/>-->
+                                </h:inputText>               
+                                <h:message for="txtEdad" style="color: red;"/>
+                                <h:outputLabel value="Sexo"/>
+                                <h:selectOneMenu value="#{personaBean.persona.sexopersona}">
+                                    <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                                    <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                                </h:selectOneMenu><br/>
+
+
+                                <h:outputLabel value="Correo electronico:"/>
+                                <h:inputText id="txtCorreo" value="#{personaBean.persona.correopersona}" required="true" label="Correo requerido"/>
+                                <h:message for="txtCorreo" style="color: red;"/>
+
+                                <!--<h:outputLabel value="Sexos"/>
+                                <h:inputText id="txtSexos" value="{personaBean.persona.sexo}" validator="{personaBean.validar}"/>
+                                <h:message for="txtSexos" style="color: red;"/>-->
+
+                            </h:panelGrid>
+                            <!--                 immediate="true" No realiza las validaciones --> 
+                            <h:commandButton value="Agregar lista" actionListener="#{personaBean.agregarPersona()}"/> 
+                            <hr/>
+
+                            <!--En caso de que no halla datos no se muestra pero si se agrega muestra (Redered)-->
+                            <h:dataTable value="#{personaBean.lstPersona}" var="per" rendered="#{personaBean.lstPersona.size() > 0 eq true}">
+                                <h:column>
+                                    <!--Encabezados de la tabla-->
+                                    <f:facet name="header"> 
+                                        <h:outputLabel value="Identificacion" />
+                                    </f:facet>
+                                    <h:outputLabel value="#{per.cedulapersona}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"> 
+                                        <h:outputLabel value="Nombres" />
+                                    </f:facet>
+                                    <h:outputLabel value="#{per.nombrepersona}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel value="Apellidos" />
+                                    </f:facet>
+                                    <h:outputLabel value="#{per.apellidopersona}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel value="Edades"/>
+                                    </f:facet>
+                                    <h:outputLabel value="#{per.edadpersona}" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel value="Sexo"/>
+                                    </f:facet>
+                                    <h:outputLabel value="#{per.sexopersona}" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel value="Correos"/>
+                                    </f:facet>
+                                    <h:outputLabel value="#{per.correopersona}" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel value="Eliminar"/>
+                                    </f:facet>
+                                    <h:commandLink value="Eliminar" actionListener="#{personaBean.eliminarPersona(per)}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputLabel value="Editar"/>
+                                    </f:facet>
+                                    <h:commandLink value="Editar" actionListener="#{personaBean.leer(per)}"/>
+                                </h:column>
+                            </h:dataTable>
+                            <hr/>
+
+                            <h:commandButton value="Guardar" actionListener="#{personaBean.guardarPersona()}"/>  <br/>
+                            <h:outputLabel value="#{personaBean.mensaje}"/>
+                        </p:fieldset>
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

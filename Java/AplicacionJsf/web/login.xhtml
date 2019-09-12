@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Login</title>
+                <h:outputStylesheet library="css" name="login.css"/>
+            </f:facet>
+        </h:head>
+        <h:body id="principal">
+
+            <div id="cuadro">
+                <h:form>
+                <p:messages autoUpdate="true" showDetail="true"/>
+                <p:fieldset>
+                <h1>Iniciar Session</h1>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="txtUsuario" value="Usuario" />
+                    <p:inputText id="txtUsuario" value="#{usuarioBean.login.nombreusuario}" required="true"/>
+                    
+                    <p:outputLabel for="txtPassword"  value="Clave"/>
+                    <p:password id="txtPassword" required="true" value="#{usuarioBean.login.claveusuario}"/>
+                    
+                    <p:commandButton value="Iniciar Session" icon="ui-icon-key" action="#{usuarioBean.iniciarSession()}"/>                                                               
+                </h:panelGrid>
+                <p:separator/>
+                <p:link value="Crear cuenta" outcome="registrousuarios" />
+                </p:fieldset>
+
+            </h:form>
+            </div>
+
+        </h:body>
+    </f:view>
+</html>
+

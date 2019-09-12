@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Buscar Telefonos</title>
+    </h:head>
+    <h:body>
+        <h2>Consultar telefonos</h2>
+        <h:form>
+            <p:panelGrid columns="3">
+                <p:outputLabel value="Persona"/>
+                <p:selectOneMenu value="#{buscarTelefonosBean.codigopersona}" filter="true" filterMatchMode="contains">
+                    <f:selectItems value="#{buscarTelefonosBean.listapersonas}" var="per" itemLabel="#{per.nombrepersona}" />
+                </p:selectOneMenu>
+            </p:panelGrid>
+            
+            <p:dataList id="lista" emptyMessage="No hay resultados">
+                
+            </p:dataList>
+        </h:form>
+    </h:body>
+</html>
+

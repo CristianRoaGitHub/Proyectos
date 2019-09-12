@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="formularioid">
+            <p:growl id="messages" autoUpdate="true"/>
+            
+            <p:panelGrid columns="2" id="panelid">
+            <f:facet name="header">
+                <p:outputLabel>Categoria</p:outputLabel>
+            </f:facet>
+                
+                <p:outputLabel value="Nombre del artista"/>
+                <p:inputText id="txtNombreArtista" value="#{controladorBean.txtNombreArtista}" />
+                
+                <p:outputLabel value="Nombre de la cancion"/>
+                <p:inputText id="txtNombreCancion" value="#{controladorBean.txtNombreCancion}" />
+                
+                <p:outputLabel value="Imagen del artista"/>
+                <p:fileUpload value="Examinar" mode="advanced"
+                              fileUploadListener="#{controladorBean.cargarImagen}" dragDropSupport="true"
+				update="messages" sizeLimit="1000000"
+				allowTypes="/(\.|\/)(jpg|png)$/" />
+            </p:panelGrid>
+        </h:form>
+        <h:form>
+            <br></br>
+            <p:commandButton value="Registrar Cancion"  actionListener="#{controladorBean.registrarCancion()}"></p:commandButton>    
+        </h:form>
+    
+    </h:body>
+</html>
+

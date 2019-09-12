@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Buscar notas</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="5">
+                <p:outputLabel for="cal" value="Fecha" />
+                <p:calendar id="cal" locale="es" required="true" value="#{buscarBean.fechaConsulta}"/>
+
+                <p:outputLabel for="cboCategoria" value="Categoria" />
+                <p:selectOneMenu id="cboCategoria" required="true" value="#{buscarBean.codigoCategoria}">
+                    <f:selectItems value="#{buscarBean.listaCategorias}" var="cat" itemLabel="#{cat.nombre}" itemValue="#{cat.codigo}"/>
+                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
+                </p:selectOneMenu>
+                <p:commandButton icon="ui-icon-search" value="Buscar" update="grid" actionListener="#{buscarBean.buscarTest()}" />
+            </h:panelGrid>
+
+            <p:dataGrid id="grid" value="#{buscarBean.listaNotas}" var="nota">
+                <p:panel header="#{nota.encabezado}">
+                    <p:outputLabel value="#{nota.codigopersona}" /><br/>
+                    <p:outputLabel value="#{nota.cuerpo}" /><br/>
+                    <p:inputTextarea value="#{nota.comentarioadmin}" disabled="true"/>
+                    <p:rating value="#{nota.valorizacion}" readonly="true"/>
+                </p:panel>
+            </p:dataGrid>
+        </h:form>
+    </h:body>
+</html>
+

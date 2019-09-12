@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div>
+                <h:form>
+                    <div class="ui-g-8 ui-sm-12">
+                        <div class="ui-material">
+                            <p:messages autoUpdate="true" showDetail="true"/>
+                            <p:fieldset>
+                                <h1>Iniciar Session</h1>
+                                <h:panelGrid columns="2">
+
+                                    <p:inputText id="txtUsuario" placeholder="Usuario" value="#{loginController.usuario.usuNombreUsu}" required="true"/>
+                                    <p:outputLabel for="txtUsuario" value="Usuario" />
+                                    <p:message for="txtUsuario"/>
+                                    
+                                    <p:outputLabel for="txtPassword"  value="Clave"/>
+                                    <p:password id="txtPassword" required="true" value="#{loginController.usuario.usuClave}"/>
+
+                                    <p:commandButton value="Iniciar Session" icon="ui-icon-key" action="#{loginController.iniciarSession()}"/>
+                                </h:panelGrid>
+                                <p:separator/>
+                            </p:fieldset>
+                        </div>
+                    </div>
+
+                    <footer class="footer   py-2 text-xs-center">
+                        <div class="container">
+                            <p>2018 © cristian.roa@micorreo.com Todos los derechos reservados</p>
+                        </div>
+                    </footer>
+                    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+                    <script src="../resources/js/jquery.min.js"></script>
+                    <script src="../resources/js/bootstrap.min.js"></script>
+                </h:form>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:notificationBar position="top" effect="slide" widgetVar="bar">
+                        <h:outputText value="Notificacion al dar clic en boton carro tres" style="font-size: 25px;"/><br/>
+                        <p:commandButton value="cerrar esto" onclick="PF('bar').hide()" type="button" icon="ui-icon-arrow-1-n"/>
+                    </p:notificationBar>
+                    <p:panel header="Venta de carros" closable="true" toggleable="true" closeTitle="Cerrar">
+                        Carros en ventas
+                        <p:graphicImage library="images" name="carros.jpg" width="125" height="100"/>
+                        <p:fieldset legend="carro_uno" toggleSpeed="300" toggleable="true">
+                            <p:panelGrid columns="2">
+                                <h:outputText value="Descripcion del carro 1"/>
+                                <p:graphicImage library="images" name="car1.jpg" width="125" height="100"/>
+                                <p:commandButton value="Ver carro uno" ajax="false" action="#{mainViewController.navigateCar1}" />
+                            </p:panelGrid>
+                        </p:fieldset>
+                        <p:fieldset legend="carro_dos" toggleSpeed="300" toggleable="true">
+                            <p:panelGrid columns="2">
+                                <h:outputText value="Descripcion del carro 2"/>
+                                <p:graphicImage library="images" name="car2.jpg" width="125" height="100"/>
+                                <p:commandButton value="Ver carro dos" ajax="false" action="#{mainViewController.navigateCar2}"/>
+                            </p:panelGrid>
+                        </p:fieldset>
+                        <p:fieldset legend="carro_tres" toggleSpeed="300" toggleable="true">
+                            <p:ajax event="toggle" onsuccess="PF('bar').show();"/>
+                            <p:panelGrid columns="2">
+                                <p:graphicImage library="images" name="car3.jpg" width="125" height="100"/>
+                                <p:column/>
+                                <p:commandButton value="Ver carro tres" ajax="false" action="#{mainViewController.navigateCar3}"/>
+                                <p:scrollPanel mode="native" style="width: 500px; height: 100px;">
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                    <h:outputText value="Descripcion del carro 3"/><br/>
+                                </p:scrollPanel>
+                            </p:panelGrid>
+                        </p:fieldset>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+                        
+    </h:body>
+</html>
+

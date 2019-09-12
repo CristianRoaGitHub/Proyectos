@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="resources/css/bootstrap.css"/>
+        <!-- Carga de fuentes de Font  Awesome -->
+        <link rel="stylesheet" href="resources/css/font-awesome.min.css"/>
+
+        <!-- Carga de estilos css personalizados -->
+        <link rel="stylesheet" href="resources/css/estilos.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+
+            <section class="bienvenidos">
+                <header class="encabezado">
+                    <nav class="navbar navbar-light navbar-fixed-top">
+                        <div class="container">
+                            <button class="navbar-toggler hidden-md-up float-xs-right" type="button" data-toggle="collapse" data-target="#menuprincipal">
+                                &#9776;
+                            </button>
+                            <a class="navbar-brand" href="#">restaurantededonlucho.com</a>
+                            <div class="collapse navbar-toggleable-sm float-md-right" id="menuprincipal">
+                                <ul class="nav navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#">Inicio</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#Nosotros">Nosotros</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#servicios">Servicios</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#Platos">Platos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#Contacto">Contacto</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#Ingresar">Ingresar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
+                <div class="texto-bienvenido text-xs-center" id="Contacto">
+                    <p class="h5">Bievenidos a nuestro establecimiento</p>
+                    <h1 class="display-4 mb-3">DONDE DON LUCHO</h1>
+                    
+                </div>
+
+            </section>
+            <section class="quienes-somos  py-2 text-xs-center" id="Nosotros">
+                <div class="container">
+                    <img src="resources/images/nosotros.png" alt="Nosotros" width="181" class="img-fluid my-auto mb-2 "/>
+                    <h2 class="h3">¿QUIENES SOMOS?</h2>
+                    <p>Ponemos a tu alcance un servicio adaptado a tus necesidades, desde una consultoría integral con supervisión de todos y cada uno de los pasos que has de seguir para crear un negocio actual (comunicación, diseño corporativo, tecnologías...) a productos adaptados a metodologías ágiles de creación de apps diseñadas por nosotros y avaladas por nuestros años de experiencia.</p>
+                    <a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#quienes-somos">MAS INFORMACIÓN</a>
+                </div>
+            </section>
+            <section class="servicios py-2 text-xs-center" id="servicios">
+                <div class="container">
+                    <h2 class="h3 mb-3">NUESTROS SERVICIOS</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                            <h3 class="h5">Domicilios</h3>
+                            <p>Para empresa que requiera ampliar sus plataformas de gestión.</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                            <h3  class="h5">Reservaciones</h3>
+                            <p>Servicios de mejora correctiva y evolutiva para sus aplicaciones.</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                            <h3  class="h5">Menu del dia</h3>
+                            <p>Customiza hasta el último píxel de tu App. Infinitas Posibilidades.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ultimos-proyectos py-2 text-xs-center">
+                <div class="container" id="Platos">
+                    <h2 class="h3 mb-3">NUESTROS PLATOS</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="#"> <img src="resources/images/res_img_1.jpg" alt="imagen restaurante 1" width="290" class="img-fluid m-x-auto"/> </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#">   <img src="resources/images/res_img_2.jpg" alt="imagen restaurante 2" width="290" class="img-fluid m-x-auto"/> </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#">  <img src="resources/images/res_img_3.jpg" alt="imagen restaurante 3" width="290" class="img-fluid m-x-auto"/> </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#">  <img src="resources/images/res_img_4.jpg" alt="imagen restaurante 4" width="290" class="img-fluid m-x-auto"/> </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#"> <img src="resources/images/res_img_5.jpg" alt="imagen restaurante 5" width="290" class="img-fluid m-x-auto"/> </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#"> <img src="resources/images/res_img_6.jpg" alt="imagen restaurante 6" width="290" class="img-fluid m-x-auto"/> </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div id="Ingresar" class="py-2 text-xs-center">
+                    <h:commandLink value="INGRESAR" action="paginas/login" class="btn btn-secondary btn-lg"/>
+                </div>
+            </section>
+            <footer class="footer   py-2 text-xs-center">
+                <div class="container">
+                    <p>2018 © cristian.roa@micorreo.com Todos los derechos reservados</p>
+                </div>
+            </footer>
+            <!-- jQuery first, then Tether, then Bootstrap JS. -->
+            <script src="resources/js/jquery.min.js"></script>
+            <script src="resources/js/bootstrap.min.js"></script>
+
+        </h:form>
+    </h:body>
+</html>
+

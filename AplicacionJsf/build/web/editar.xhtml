@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputLabel value="Identificacion:"/>
+                <h:inputText id="txtIdentificacion" value="#{personaBean.persona.cedula}" required="true" label="Nombre Requerido"/>
+                <h:message for="txtIdentificacion" style="color: red;"/>
+                
+                <h:outputLabel value="Nombre:"/>
+                <h:inputText id="txtNombre" value="#{personaBean.persona.nombre}" required="true" label="Nombre Requerido"/>
+                <h:message for="txtNombre" style="color: red;"/>
+
+                <h:outputLabel value="Apellidos:"/>
+                <h:inputText id="txtApellido" value="#{personaBean.persona.apellido}" required="true" label="Apellido Requerido"/>
+                <h:message for="txtApellido" style="color: red;"/>
+
+                <h:outputLabel value="Edad:"/>
+                <h:inputText id="txtEdad" value="#{personaBean.persona.edad}" label="Edad entre 1 - 18 Años">
+                    <f:validator validatorId="MayorEdadValidator"/>
+                </h:inputText>               
+                <h:message for="txtEdad" style="color: red;"/>
+
+
+                <h:outputLabel value="Sexo"/>
+                <h:selectOneMenu value="#{personaBean.persona.sexo}">
+                    <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                    <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                </h:selectOneMenu><br/>
+
+
+                <h:outputLabel value="Correo electronico:"/>
+                <h:inputText id="txtCorreo" value="#{personaBean.persona.correo}" required="true" label="Correo requerido"/>
+                <h:message for="txtCorreo" style="color: red;"/>
+            </h:panelGrid>
+            <h:commandButton value="Modificar" actionListener="{personaBean.modificaPersona()}"/> 
+            <!--                 immediate="true" No realiza las validaciones --> 
+            <h:commandButton value="Cancelar" action="registro" immediate="true"/> 
+        </h:form>
+    </h:body>
+</html>
+

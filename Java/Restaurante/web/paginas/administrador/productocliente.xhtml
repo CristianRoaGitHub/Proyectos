@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="formproducto">
+                    <h2>Producto</h2>
+                    <p:commandButton icon="ui-icon-plusthick" value="Registrar Productos" onclick="PF('wdialogo').show();" />
+                    <p:dataTable  id="dtaproducto" value="#{productoController.productos}" var="pro" rendered="#{productoController.productos.size() > 0 eq true}">
+                        <p:column headerText="N° ID Producto">
+                            <h:outputText value="#{pro.proIdAuto}"/>
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <p:outputLabel value="#{pro.proNombre}" />
+                        </p:column>
+
+                        <p:column headerText="($) Precio">
+                            <p:outputLabel value="#{pro.proPrecioProducto}" />
+                        </p:column>
+                        <p:column headerText="Descripcion">
+                            <p:outputLabel value="#{pro.proObservacion}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+                <p:dialog id="dialogo" widgetVar="wdialogo" header="Nuevo Producto" modal="true" resizable="false" closeOnEscape="true">
+                    <h:form id="formdialogo">
+                        <h:panelGrid columns="2">
+                            <p:outputLabel for="cboCategoria" value="Categoria:"/>
+                            <p:selectOneMenu id="cboCategoria" value="#{productoController.codigoCat}">
+                                <f:selectItems value="#{productoController.categorias}" var="cat" itemLabel="#{cat.catTipo}" itemValue="#{cat.catIdAuto}"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="txtNombreProducto" value="Nombre:"/>
+                            <p:inputText id="txtNombreProducto"  required="true" value="#{productoController.producto.proNombre}" />
+
+                            <p:outputLabel for="txtPrecio" value="Precio ($)"/>
+                            <p:inputText id="txtPrecio"  required="true" value="#{productoController.producto.proPrecioProducto}" />
+
+                            <p:outputLabel for="txtDescripcion" value="Descripcion"/>
+                            <p:inputTextarea id="txtDescripcion"  required="true" value="#{productoController.producto.proObservacion}" />
+
+
+                            <p:commandButton value="Registrar" icon="ui-icon-check" 
+                                             actionListener="#{productoController.registrarProducto()}" 
+                                             onclick="PF('wdialogo').hide();" 
+                                             update=":formproducto:dtaproducto"/> 
+                            <p:commandButton value="Cancelar" icon="ui-icon-close" onclick="PF('wdialogo').hide();"/>
+                        </h:panelGrid>
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

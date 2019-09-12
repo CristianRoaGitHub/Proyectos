@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="#" />
+                            <p:menuitem value="Documentation" url="#" />
+                            <p:menuitem value="Forum" url="#" />
+                            <p:menuitem value="Themes" url="#" />
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="center">
+                    <h:form>
+                        <!--<p:growl con este saca un mensaje popup-->
+                        <p:messages id="mensaje"  autoUpdate="false" severity="info, fatal" showSummary="false" showDetail="true"/>
+                        <p:fieldset>
+                            <p>Registra un usuarop</p> <br/>
+                            <h:panelGrid columns="3" id="pgRegistrar">
+                                <p:outputLabel for="txtNombreUsuario" value="Usuario" />
+                                <p:inputText id="txtNombreUsuario" value="#{usuarioBean.login.nombreusuario}" required="true" requiredMessage="Campo requerido" /> 
+                                <p:message for="txtNombreUsuario"/>
+                                
+                                <p:outputLabel for="clave1" value="Clave:"/>
+                                <p:password id="clave1" value="#{usuarioBean.login.claveusuario}" 
+                                            validatorMessage="Las claves no coinciden" weakLabel="Debil" strongLabel="Fuerte" goodLabel="Bueno"
+                                            match="clave2" feedback="true" promptLabel="Ingrese una clave" required="true" requiredMessage="Campo requerido"/>
+                                <p:message for="clave1"/>
+                                
+                                <p:outputLabel for="clave2" value="Repetir clave:"/>
+                                <p:password id="clave2" required="true" requiredMessage="Campo requerido"/>
+                                <p:message for="clave2"/>
+                                
+                                
+                                <p:outputLabel for="cboTipo" value="Tipo de cuenta" />
+                                <p:selectOneMenu id="cboTipo" value="#{usuarioBean.login.tipo}" required="true" requiredMessage="Campo requerido"> 
+                                    <f:selectItem itemValue="A" itemLabel="Administrador"/>
+                                    <f:selectItem itemValue="O" itemLabel="Operario"/>
+                                </p:selectOneMenu><br/>
+                                
+                                <p:commandButton value="Registra usuario" icon="ui-icon-check" update="pgRegistrar, mensaje" actionListener="#{usuarioBean.registrar()}"/> <br/>
+
+                                
+                            </h:panelGrid>
+                        </p:fieldset>
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>

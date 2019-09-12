@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_aplicacionjsf" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="409dc893-8b9b-4c04-93e4-1579ab684086">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="txtNombreConsultaReporte" class="java.lang.String"/>
+	<field name="cedula" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="apellido" class="java.lang.String"/>
+	<field name="edad" class="java.lang.Integer"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="144" y="22" width="263" height="38" forecolor="#FF0000" uuid="7263b6eb-7a70-4d4a-a95b-ee4bfdeb2d73"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Reporte de consulta PDF]]></text>
+			</staticText>
+			<image>
+				<reportElement x="421" y="0" width="84" height="79" uuid="4928893d-02be-4708-a937-b4a295015ed0"/>
+				<imageExpression><![CDATA["C:\\Users\\ACER\\Documents\\GitHub\\Proyectos\\Java\\AplicacionJsf\\web\\imagenes\\ireport\\img_reporte.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="57" height="20" forecolor="#0033CC" uuid="a485dde1-88d1-4d45-816b-dc8a0582bca1"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Cedula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="76" y="2" width="68" height="20" forecolor="#0033CC" uuid="a73a4e06-6ed2-464c-b4b0-f34fc5d35b23"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="0" width="65" height="20" forecolor="#0033CC" uuid="eeb845b9-a2df-41ce-900e-006eaf32ae4e"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="0" width="50" height="20" forecolor="#0033CC" uuid="431bf425-2abd-46bc-994d-a74287a501fd"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Edades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="2" width="37" height="20" forecolor="#0033CC" uuid="a88256b7-df44-40f0-96f5-d434244be3cc"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="2" width="63" height="20" forecolor="#0033CC" uuid="b73edecc-c6a3-4371-bfe8-5d859484bcf3"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Correos]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="6" width="57" height="20" uuid="d6d88064-47ca-434e-ba7e-cff3344c251c"/>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="6" width="68" height="20" uuid="0e2956ec-b412-4ecf-991b-9ea91dbba75f"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="6" width="65" height="20" uuid="f26308af-ac84-4d49-aa96-a951dbc060d5"/>
+				<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="6" width="50" height="20" uuid="d84b32d3-b36f-42b5-8a66-ddc7df7cb5f6"/>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="6" width="37" height="20" uuid="7006427c-91cb-48c3-b9af-bebd2b8d7019"/>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="6" width="63" height="20" uuid="a02832b4-f5c4-4704-be75-91aa745e187b"/>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="7" y="8" width="69" height="20" forecolor="#0000FF" uuid="d65efb11-b4a5-4bef-8e15-db0d22f833fb"/>
+				<text><![CDATA[Consulta de:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="87" y="8" width="93" height="20" forecolor="#0033FF" uuid="a2bab258-c0eb-421d-88d4-c0f415b0c4be"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{txtNombreConsultaReporte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="2" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="4" splitType="Stretch"/>
+	</summary>
+</jasperReport>

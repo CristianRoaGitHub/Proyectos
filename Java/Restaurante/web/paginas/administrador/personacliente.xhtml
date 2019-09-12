@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+
+        <ui:composition template="../../WEB-INF/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <div style="
+/*                     background-color: blue;*/
+                     margin: auto;
+                     position: relative;
+                     top: 7px;
+                     left: 100px;
+                     height: 620px;
+                     width: 550px;
+                     
+                     ">
+                    <!--<ui:insert name="content">-->
+                    <div>
+                        <h:form>
+                            <p:growl id="mensaje"  autoUpdate="false" severity="info, fatal" showSummary="false" showDetail="true"/>
+                            <p:fieldset >
+                                <p>Datos de la persona</p>
+                                <h:panelGrid columns="3">
+                                    <p:outputLabel for="txtIdentificacion" value="Identificacion:"/>
+                                    <p:inputText id="txtIdentificacion" value="#{personaController.persona.perIdCedula}" required="true" label="Identificacion Requerido"/>
+                                    <p:message for="txtIdentificacion" style="color: red;"/>
+
+                                    <p:outputLabel for="txtNombre"  value="Nombre:"/>
+                                    <p:inputText id="txtNombre" value="#{personaController.persona.perNombre}" required="true" label="Nombre Requerido"/>
+                                    <p:message for="txtNombre" style="color: red;"/>
+
+
+                                    <p:outputLabel for="txtApellido" value="Apellido:"/>
+                                    <p:inputText id="txtApellido" value="#{personaController.persona.perApellido}" required="true" label="Apellido Requerido"/>
+                                    <p:message for="txtApellido" style="color: red;"/>
+
+                                    <p:outputLabel value="Genero"/>
+                                    <p:selectOneMenu value="#{personaController.persona.perGenero}">
+                                        <f:selectItem itemValue="M" itemLabel="Masculino" />
+                                        <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                                    </p:selectOneMenu><br/>
+
+
+                                    <p:outputLabel for="cal" value="Fecha de nacimiento:"/>
+
+                                    <p:calendar id="cal" locale="es" required="true" value="#{personaController.persona.perFechaNac}"  navigator="true" pattern="yyyy/MM/dd" yearRange="c-50:c+50"/>
+
+                                    <h:column/>
+                                    <p:outputLabel for="txtTelefono" value="Telefono:"/>
+                                    <p:inputText id="txtTelefono" value="#{personaController.persona.perTelefono}"  label="Telefono requerido"/>
+
+                                    <p:message for="txtTelefono" style="color: red;"/>
+
+                                    <p:outputLabel for="txtCorreo" value="Correo electronico:"/>
+                                    <p:inputText id="txtCorreo" value="#{personaController.persona.perCorreo}" required="true" label="Correo requerido"/>
+                                    <p:message for="txtCorreo" style="color: red;"/>
+                                </h:panelGrid>
+                            </p:fieldset>
+                            <p:fieldset >
+
+                                <p>Datos del usuario</p> 
+
+                                <h:panelGrid columns="2">
+
+                                    <p:outputLabel for="cboTipo" value="Tipo de cuenta" />
+                                    <p:selectOneMenu id="cboTipo" value="#{personaController.usuario.usuTipo}" required="true" requiredMessage="Campo requerido"> 
+                                        <f:selectItem itemValue="A" itemLabel="Administrador"/>
+                                        <f:selectItem itemValue="O" itemLabel="Operario"/>
+                                    </p:selectOneMenu>
+
+
+                                    <p:outputLabel for="txtNombreUsuario" value="Usuario:" />
+                                    <p:inputText id="txtNombreUsuario" value="#{personaController.usuario.usuNombreUsu}" required="true" requiredMessage="Campo requerido" /> 
+                                    <p:message for="txtNombreUsuario"/>
+
+                                    <p:column/>
+                                    <p:outputLabel for="clave1" value="Clave:"/>
+                                    <p:password id="clave1" value="#{personaController.usuario.usuClave}" 
+                                                validatorMessage="Las claves no coinciden" weakLabel="Debil" strongLabel="Fuerte" goodLabel="Bueno"
+                                                match="clave2" feedback="true" promptLabel="Ingrese una clave" required="true" requiredMessage="Campo requerido"/>
+                                    <p:message for="clave1"/>
+
+
+                                    <p:column/>
+                                    <p:outputLabel for="clave2" value="Repetir clave:"/>
+                                    <p:password id="clave2" required="true" requiredMessage="Campo requerido"/>
+                                    <p:message for="clave2"/>
+                                    <p:column />
+                                    <p:commandButton value="Realizar Registro" action="#{personaController.realizarRegistro()}" icon="ui-icon-check" update="mensaje"/>
+                                    <p:commandButton value="Cancelar" action="#{personaController.cancelar()}" icon="ui-icon-check" immediate="true"/>
+                                </h:panelGrid>
+                            </p:fieldset>
+                        </h:form>
+                    </div>
+                    <!--</ui:insert>-->
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

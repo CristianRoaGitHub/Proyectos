@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h2>Registrar Categorias</h2>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <p:outputLabel for="txtCategoria" value="Categoria"/>
+                        <p:inputText id="txtCategoria"  required="true" value="#{categoriaController.categoria.catTipo}" />
+                        <p:outputLabel for="txtDescripcionCategoria" value="Descripcion de la cateoria"/>
+                        <p:inputTextarea id="txtDescripcionCategoria"  required="true" value="#{categoriaController.categoria.catDescripcion}" />
+                        <p:commandButton value="Registrar" icon="ui-icon-check" action="#{categoriaController.registrarCategoria()}"/> 
+                        <p:commandButton value="Cancelar" icon="ui-icon-close" action="#{categoriaController.cancelar()}" immediate="true" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+/* 
+    Created on : 03-abr-2018, 21:23:13
+    Author     : ACER
+*/
+
+#principal{
+    width: 1024px;
+    margin: 0 auto;
+}
+#cuadro{
+    margin: 400px;
+    width: 0px;
+    text-align: center;
+}

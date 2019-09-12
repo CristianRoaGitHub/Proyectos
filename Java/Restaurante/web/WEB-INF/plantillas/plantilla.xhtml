@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top" style="background-color: yellow;
+             position: static;
+             height: 200px;
+             ">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+        <div style="background-color: #000; position: static;height: 620px; display: block; margin: auto;">
+
+            <div id="left" style="background-color: blue;
+                 width:  200px;
+                 height: 620px;
+                 ">
+                <ui:insert name="left">
+                    <h:form>
+                        <p:panelMenu model="#{menuController.model}">
+                        </p:panelMenu>
+                    </h:form>
+                </ui:insert>
+            </div>
+
+            <div style="background-color: red; height: 620px; position: relative; top: -620px; right: -200px; ">
+
+                <div id="content" class="right_content" style="background-color: orange;
+                     position: relative;
+                     left: 0px;
+                     height: 620px;
+                     ">
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
+<!--                <div id="right" style="
+                     position: relative;
+                     top: 0px;
+                     right: -4000px;
+                     width: 200px;
+                     height: 620px;
+                     background-color: lightblue;">
+                    <ui:insert name="right">Right</ui:insert>
+                </div>-->
+
+
+            </div>
+        </div>
+        <div id="bottom" style="background-color: green;
+             position: static;
+             height: 150px;">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

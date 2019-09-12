@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html"> 
+
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+    </f:view>
+    <h:body>
+        <h:form>
+
+            <p:commandButton value="Consultar" action="#{controlador.leer()}" update="lista"/>
+
+
+            <p:dataTable id="lista" var="his" value="#{controlador.listaHistorial}">
+                <p:column headerText="Identificacion">
+                    <h:outputText value="#{his.identificacion}" />
+                </p:column>
+
+                <p:column headerText="Nombre paciente">
+                    <h:outputText value="#{his.nombrePaciente}" />
+                </p:column>
+
+                <p:column headerText="Servicio">
+                    <h:outputText value="#{his.servicio}" />
+                </p:column>
+
+                <p:column headerText="Precio">
+                    <h:outputText value="#{his.precio}" />
+                </p:column>
+
+                <p:column headerText="Doctor">
+                    <h:outputText value="#{his.nombreDoctor}" />
+                </p:column>
+
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{his.fecha}" />
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

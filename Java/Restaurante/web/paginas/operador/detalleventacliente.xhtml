@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:panel id="basic" header="Ventas" footer="Detalle de la ventas" style="margin-bottom:5px; position: absolute;">
+                        <h:panelGrid columns="0" cellpadding="10" style="border: solid #000000;">
+                            <!--                            <p:outputLabel id="lblFecha" value="{detalleVentaController.fecha}">
+                                                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone=""/>
+                                                        </p:outputLabel>
+                                                        <p:poll id="poll" interval="1" update="lblFecha" rendered="true" />-->
+                            <p:separator/>
+
+                            <p:panelGrid columns="2">
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Trabajador:" />
+                                        <p:outputLabel value="Alex Trujillo" />    
+                                    </p:column>
+                                </p:row>
+                                <p:panelGrid columns="2">
+                                    <p:row>
+                                        <p:column class="center_content">
+
+                                            <p:outputLabel value="Categoria: " />
+                                            <p:selectOneMenu value="#{detalleVentaController.codigoCat}">
+                                                <f:selectItem itemLabel="Seleccionar" noSelectionOption="true"/>
+                                                <f:selectItems value="#{detalleVentaController.selectItemsOneCategoria}"/>
+                                                <p:ajax update="lslProducto, lblPrecioProductoItem"/>
+                                            </p:selectOneMenu>
+
+                                            <p:outputLabel value="Producto:" />
+                                            <p:selectOneMenu id="lslProducto" value="#{detalleVentaController.codigoPro}" >
+                                                <f:selectItem itemLabel="Seleccionar" noSelectionOption="true" />
+                                                <f:selectItems value="#{detalleVentaController.selectItemsOneProducto}"/>
+                                                <p:ajax update="lblPrecioProductoItem"/>
+                                            </p:selectOneMenu>
+
+                                            <p:outputLabel id="lblPrecioProductoItem" value="#{detalleVentaController.precioProducto}" style="font-family: cursive; color: blue;" />
+
+                                            <p:outputLabel value="Cantidad: " />
+                                            <p:spinner id="spnCantidad" value="#{detalleVentaController.cantidadP}" min="1" max="30" size="1" style="width:70px"/>
+                                        </p:column>
+
+                                        <p:column>
+                                            <p:commandButton id="btnAgregar" update="tablita" value="Agregar" icon="ui-icon-plus" actionListener="#{detalleVentaController.agregarDetalleventa()}"/>
+                                        </p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:panelGrid>
+
+                            <p:separator/>
+
+                            <h:panelGrid id="tablita"  columns="0" cellpadding="10" style="border: solid #D20005; margin-bottom:10px;">
+
+                                <h:dataTable value="#{detalleVentaController.listaProductoDetalle}" var="pro" rendered="#{detalleVentaController.listaProductoDetalle.size() > 0 eq true}" style="position: absolute 0;">
+                                    <h:column>
+                                        <f:facet name="header"> 
+                                            <h:outputLabel value="Codigo" />
+                                        </f:facet>
+                                        <h:outputLabel value="#{pro.producto.proIdAuto}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> 
+                                            <h:outputLabel value="Producto" />
+                                        </f:facet>
+                                        <h:outputLabel value="#{pro.producto.proNombre}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> 
+                                            <h:outputLabel value="Precio" />
+                                        </f:facet>
+                                        <h:outputLabel value="#{pro.detalleVenta.detPrecioProducto}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputLabel value="Cantidad" />
+                                        </f:facet>
+                                        <h:outputLabel value="#{pro.detalleVenta.detCantidadProducto}" style="color: black;"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputLabel value="Opcion"/>
+                                        </f:facet>
+                                        <h:commandLink value="Quitar" />
+                                    </h:column>
+
+                                </h:dataTable>
+                            </h:panelGrid>
+
+                            <p:commandButton id="btnFactura" value="Generar Factura" update="panelVenta" icon="ui-icon-check"   onclick="PF('wdialogo').show();"  actionListener="#{detalleVentaController.generarFactura()}"/>
+
+                            <p:dialog id="dialogo" widgetVar="wdialogo" header="Factura N° (1)"  showEffect="explode" modal="true" resizable="false" closeOnEscape="true">
+                                <!--                                                        <h:form >-->
+                                <p:panelGrid columns="2" id="panelVenta">
+
+                                    <p:outputLabel value="Fecha"/>
+                                    <p:outputLabel id="lblFechaFactura" value="#{detalleVentaController.venta.venFecha}" />
+
+                                    <p:outputLabel value="Numero de Factura"/>
+                                    <p:outputLabel id="lblNumeroFactura" value="#{detalleVentaController.venta.venDetCodDetallesAut}" />
+
+                                    <p:outputLabel value="Mesero (a):" />
+                                    <p:outputLabel id="lblMesero" value="#{detalleVentaController.venta.venNombreOperario}"/>     
+                                    
+
+                                    
+                                    <p:outputLabel value="Precio Total:" />
+                                    <p:outputLabel id="lblPrecioTotal" value="#{detalleVentaController.venta.venValorTotal}"/>
+
+                                    <p:outputLabel value="Cantidad Productos:" />
+                                    <p:outputLabel id="lblCantidadP" value="#{detalleVentaController.venta.venCantidadTotal}"/>
+
+                                    <p:outputLabel value="Cliente:" />
+                                    <p:outputLabel id="lblNombreCliente" value="Clientofina Clientosky"/>
+
+                                    <p:outputLabel value="Identificacio:" />
+                                    <p:outputLabel id="lblIdCliente" value="10190000000"/>
+                                    
+                                    <p:commandButton value="Aceptar" icon="ui-icon-check"  oncomplete="PF('wdialogo').hide();"/> 
+                                    <p:commandButton value="Cancelar" icon="ui-icon-close" onclick="PF('wdialogo').hide();"/>
+                                </p:panelGrid>
+                                <!--</h:form>-->
+                            </p:dialog>
+                        </h:panelGrid>
+                    </p:panel> 
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
